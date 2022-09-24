@@ -1,0 +1,132 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <iostream>
+
+struct dato {
+string username;
+string pwd;
+ struct dato *sgte;
+
+typedef struct dato *Tlist;
+void insertarLista(Tlist &lista, string username, string pwd){
+ Tlist d;
+ d = new(struct dato);
+ d>username = username;
+ d->pwd = pwd;
+ d->sgte = lista;
+ lista = d;
+  
+}
+
+void usuariosListas(Tlist lista)
+{
+  int i = 0;
+while(lista != NULL)
+{
+ cout <<' '<< i+1 <<") " << lista->username << endl;
+lista = lista->sgte;
+ i++;
+}
+}
+void buscarLista(Tlist lista, string username){
+ Tlist d = lista;
+ int i = 1, band = 0;
+ while(d!=NULL){
+ if(d->username==username){
+cout<<"\n\t usuario disponible : "<<i+1<<endl;
+ band = 1;
+}
+d = d->sgte;
+i++;
+}
+if(band==0)
+cout<<"\n\t Usuario no existe"<<endl;
+}
+void eliminarLista(Tlist &lista, string username){
+ Tlist e, ant;
+ e = lista;
+ if(lista!=NULL)
+{
+ while(e!=NULL)
+{
+ if(e->username==username)
+ {
+ if(e==lista)
+lista = lista->sgte;
+else
+ant->sgte = e->sgte;
+delete(e);
+ return;
+   }
+ant = e;
+ e = e->sgte;
+
+ cout<<"\n\t Usuario eliminado"<<endl;
+}
+}
+else cout<<" Lista vacía";
+}
+
+void menu(void);
+void guardar(void);
+void ingresar(int act);
+int buscar(int accion);
+void mostrar(void);
+void eliminar(void);
+void cargar(void)
+main()
+ {
+ menu();
+ }
+ 
+void menu(void)
+ {
+ int option, data;
+ do
+ {
+ cout<<"1 - Ingresar";
+ cout<<"\t2 - Buscar usuario";
+ cout<<"\t3 - Mostrar ususario";
+ cout<<"\t4 - Eliminar usuario existente";
+ cout<<"\t5 - Mostrar la lista";
+ cout<<"\t0 - Finalizar";
+ cout<<"\nSelecciona una de las anteriores opciones: ";
+ cin>>option;
+ switch(option)
+ {
+   case 0: cout<<"\n\nFinaliza el programa";
+ getch();
+ p=i;
+ while(p)
+ {
+ }
+   exit(0);
+ case 1:
+ cout<< "\n Username: "; cin>> usuario;
+        cout<< "\n Password: "; cin>> usuarios;
+        insertarListas(lista, ususario, usuario2);
+break;
+   
+ case 2:
+  cout << "\n\n Muestra de usuarios\n\n";
+   usuariosListas(lista);
+ break;
+
+ case 3: 
+   cout<<"\n Usuario a buscar: "; cin>> usuario;
+buscarListas(lista, usuario);
+break;
+ case 4: 
+   cout<<"\n eliminado: "; cin>> _dato;
+
+eliminarListas(lista, usuario);
+break;
+ }
+ cout<<endl<<endl;
+ system("pause");system("cls");
+ }while(op!=5);
+
+ system("pause");
+   return 0;
+}
